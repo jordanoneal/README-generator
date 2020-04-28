@@ -92,6 +92,7 @@ ${response.usage}
 
 ## License
 ${response.license}
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Badges
 https://img.shields.io/badge/Repo%20status-Active-green
