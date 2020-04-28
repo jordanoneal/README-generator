@@ -42,11 +42,6 @@ function promptUser() {
         },
         {
             type: "input",
-            message: "Enter License",
-            name: "license"
-        },
-        {
-            type: "input",
             message: "If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so.",
             name: "contributing"
         },
@@ -91,11 +86,10 @@ ${response.description}
 ${response.usage}
 
 ## License
-${response.license}
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Badges
-https://img.shields.io/badge/Repo%20status-Active-green
+[![Badge](https://img.shields.io/badge/Repo%20status-Active-green)](https://shields.io/)
 
 ## Contributing
 ${response.contributing}
