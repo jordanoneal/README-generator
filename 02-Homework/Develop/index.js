@@ -103,8 +103,7 @@ ${response.contributing}
 ${response.tests}
 
 ## Images
-![Image of GitHub Profile picture]
-${response.picture}
+![Image of GitHub Profile picture](${response.picture})
 
 ## Email
 ${response.email}`
