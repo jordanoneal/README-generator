@@ -33,18 +33,16 @@ function promptUser() {
             message: "Enter Description",
             name: "description"
         },
-
-        // How to dynamically create license
         {
             type: "list",
             message: "What kind of license should your project have?",
-            choices: ["MIT Licese", "GNU GPLv3"],
-            name: "lisense"
+            choices: ["MIT", "GNU GPLv3"],
+            name: "license"
         },
         {
             type: "input",
             message: "What are the steps required to install your project?",
-            name: "installation"
+            name: "installation",
         },
         {
             type: "input",
@@ -61,11 +59,9 @@ function promptUser() {
             message: "Write tests for your application. Then provide examples on how to run them.",
             name: "tests"
         },
-
-        // this will change to ask for 'username'
         {
             type: "input",
-            message: "Enter User GitHub profile picture",
+            message: "Enter User GitHub username",
             name: "picture"
         },
         {
@@ -75,19 +71,25 @@ function promptUser() {
 
         }
 
+        
+
     ])
 
-        // .then(function ({ picture }) {
-        //     const queryUrl = `https://avatars.githubusercontent.com/${picture}`;
+    // .then(function ({ picture }) {
+    //     const queryUrl = `https://avatars.githubusercontent.com/${picture}`;
 
-        //     axios.get(queryUrl).then(function (response) {
+    //     axios.get(queryUrl).then(function (response) {
 
-        //     })
-        // })
+    //     })
+    // })
 }
 
 function generateREADME(response) {
     return `
+
+## Badges
+[![Badge](https://img.shields.io/badge/Repo%20status-Active-green)](https://shields.io/)
+
 # Your Project Title
 ${response.title}
 
@@ -107,10 +109,7 @@ ${response.description}
 ${response.usage}
 
 ## License
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
-## Badges
-[![Badge](https://img.shields.io/badge/Repo%20status-Active-green)](https://shields.io/)
+[![License: GPL v3](https://img.shields.io/badge/License-${response.license}-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Contributing
 ${response.contributing}
@@ -135,6 +134,7 @@ async function init() {
         await writeFileAsync("README.md", README);
 
         console.log("Sucessfully wrote to README.md");
+        console.log(response.license)
     } catch (err) {
         console.log(err);
     }
