@@ -1,3 +1,5 @@
+// * Starter Code * 
+
 // const questions = [
 
 // ];
@@ -11,10 +13,11 @@
 
 // init();
 
-// write code below
+// * New Code *
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
+const axios = require("axios");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -29,6 +32,14 @@ function promptUser() {
             type: "input",
             message: "Enter Description",
             name: "description"
+        },
+
+        // How to dynamically create license
+        {
+            type: "list",
+            message: "What kind of license should your project have?",
+            choices: ["MIT Licese", "GNU GPLv3"],
+            name: "lisense"
         },
         {
             type: "input",
@@ -50,6 +61,8 @@ function promptUser() {
             message: "Write tests for your application. Then provide examples on how to run them.",
             name: "tests"
         },
+
+        // this will change to ask for 'username'
         {
             type: "input",
             message: "Enter User GitHub profile picture",
@@ -57,12 +70,20 @@ function promptUser() {
         },
         {
             type: "input",
-            message: "Enter User GitHub email",
+            message: "Enter your contact email",
             name: "email"
 
         }
 
     ])
+
+        // .then(function ({ picture }) {
+        //     const queryUrl = `https://avatars.githubusercontent.com/${picture}`;
+
+        //     axios.get(queryUrl).then(function (response) {
+
+        //     })
+        // })
 }
 
 function generateREADME(response) {
@@ -98,10 +119,10 @@ ${response.contributing}
 ${response.tests}
 
 ## Images
-![Image of GitHub Profile picture](${response.picture})
+![Image of GitHub Profile picture](https://avatars.githubusercontent.com/${response.picture})
 
 ## Email
-${response.email}`
+If there are any issues or questions about this project, you may contact me directly, at ${response.email}`
 
 }
 
@@ -113,7 +134,7 @@ async function init() {
 
         await writeFileAsync("README.md", README);
 
-        console.log("Sucessfull wrote to README.md");
+        console.log("Sucessfully wrote to README.md");
     } catch (err) {
         console.log(err);
     }
